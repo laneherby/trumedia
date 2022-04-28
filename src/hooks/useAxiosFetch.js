@@ -52,7 +52,7 @@ const useAxiosFetch = (dataUrl) => {
                     setIsLoading(false);
                 }
             }
-            console.log(dataUrl);
+            
             fetchData(dataUrl);
         }
         // eslint-disable-next-line

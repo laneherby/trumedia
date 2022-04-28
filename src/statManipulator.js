@@ -286,6 +286,10 @@ const getSeasonHighs = (stats) => {
     return { hitsHigh, hrHigh, hitStreak, onBaseStreak };
 };
 
+const setLabel = (statsObj, label) => {
+    statsObj.label = label;
+};
+
 //runs all functions to get all data needed and calculated for the chart and tables
 export const calcMasterStats = (stats) => {
     const playerData = {
@@ -306,10 +310,15 @@ export const calcMasterStats = (stats) => {
     playerData.biweeklyData = biweeklyData.map(statsObj => calcAllStats(statsObj));
     playerData.monthlyData = monthlyData.map(statsObj => calcAllStats(statsObj));
     playerData.preASBData = calcAllStats(preASBData);
+    setLabel(playerData.preASBData, "Pre ASG");
     playerData.postASBData = calcAllStats(postASBData);
+    setLabel(playerData.postASBData, "Post ASG");
     playerData.dayGameData = calcAllStats(dayGameData);
+    setLabel(playerData.dayGameData, "Day Games");
     playerData.nightGameData = calcAllStats(nightGameData);
+    setLabel(playerData.nightGameData, "Night Games");
     playerData.seasonData = calcAllStats(seasonData);
+    setLabel(playerData.seasonData, "Season");
     playerData.seasonHighs = getSeasonHighs(stats);
 
     return playerData;
