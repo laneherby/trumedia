@@ -10,6 +10,12 @@ const darkTheme = createTheme({
     mode: 'dark',
     background: {
       default: "#303030"
+    },
+    primary: {
+      main: "#297C90"
+    },
+    secondary: {
+      main: "#48b1cb"
     }
   }
 });

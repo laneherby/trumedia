@@ -98,10 +98,11 @@ const getMonthlyData = (stats) => {
     const monthlyData = [];
     for(const month in monthlyArrays) {
         const monthCumulative = cumulateStats(monthlyArrays[month]);
+        monthCumulative.G = monthlyArrays[month].length;
         monthCumulative.month = new Date(monthCumulative.startDate + "/18").toLocaleString("default", { month: "short" });
         monthlyData.push(monthCumulative);
     }
-    
+
     return monthlyData;
 };
 
@@ -117,7 +118,8 @@ const combineMonths = (monthlyData) => {
         "HBP": 0,
         "SF": 0,
         "TB": 0,
-        "RBI": 0
+        "RBI": 0,
+        "G": 0
     };
 
     monthlyData.forEach(month => {
@@ -141,6 +143,9 @@ const getASBData = (stats) => {
         postASBData: cumulateStats(postASBArray)
     };
 
+    asbData.preASBData.G = preASBArray.length;
+    asbData.postASBData.G = postASBArray.length;
+
     return asbData;
 };
 
@@ -155,6 +160,9 @@ const getGametimeData = (stats) => {
         dayGameData: cumulateStats(dayGameArray),
         nightGameData: cumulateStats(nightGameArray)
     };
+
+    gametimeData.dayGameData.G = dayGameArray.length;
+    gametimeData.nightGameData.G = nightGameArray.length;
 
     return gametimeData;
 };
@@ -291,7 +299,7 @@ const setLabel = (statsObj, label) => {
 };
 
 //runs all functions to get all data needed and calculated for the chart and tables
-export const calcMasterStats = (stats) => {
+const calcMasterStats = (stats) => {
     const playerData = {
         "playerId": stats[0].playerId,
         "fullName": stats[0].fullName,
@@ -314,12 +322,14 @@ export const calcMasterStats = (stats) => {
     playerData.postASBData = calcAllStats(postASBData);
     setLabel(playerData.postASBData, "Post ASG");
     playerData.dayGameData = calcAllStats(dayGameData);
-    setLabel(playerData.dayGameData, "Day Games");
+    setLabel(playerData.dayGameData, "Day");
     playerData.nightGameData = calcAllStats(nightGameData);
-    setLabel(playerData.nightGameData, "Night Games");
+    setLabel(playerData.nightGameData, "Night");
     playerData.seasonData = calcAllStats(seasonData);
     setLabel(playerData.seasonData, "Season");
     playerData.seasonHighs = getSeasonHighs(stats);
 
     return playerData;
 }
+
+export default calcMasterStats;

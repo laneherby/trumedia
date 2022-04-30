@@ -21,7 +21,7 @@
 
 .playerSelect {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     width: 33%;
     min-height: 120px;
@@ -66,5 +66,52 @@
 
 .tabularData {
     margin-top: 6px;
-    background-color: rebeccapurple;
+}
+
+th {
+    font-weight: bold !important;
+    background-color: rgb(18, 18, 18);
+}
+
+.rowLabel {
+    min-width: 120px !important;
+    position: sticky;
+    left: 0;
+    box-shadow: 1px 0 0 1px rgb(81, 81, 81);
+}
+
+.chartFilters {
+    display: flex;
+    padding: 0 calc((100% - 1200px) / 2);
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.chartSelect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartChipIntervals {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.chartChipIntervals > div {
+    padding: 0 3px;
+    margin: 0 3px;
+}
+
+.customTooltip {
+    background-color: #303030;
+    border: solid 3px #48b1cb;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.recharts-cartesian-axis-tick-value {
+    fill: #fff;
 }
