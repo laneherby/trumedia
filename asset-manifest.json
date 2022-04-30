@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/trumedia/static/css/main.69740d4c.css",
-    "main.js": "/trumedia/static/js/main.050cdd45.js",
+    "main.css": "/trumedia/static/css/main.0b558669.css",
+    "main.js": "/trumedia/static/js/main.71706f72.js",
     "index.html": "/trumedia/index.html",
-    "main.69740d4c.css.map": "/trumedia/static/css/main.69740d4c.css.map",
-    "main.050cdd45.js.map": "/trumedia/static/js/main.050cdd45.js.map"
+    "main.0b558669.css.map": "/trumedia/static/css/main.0b558669.css.map",
+    "main.71706f72.js.map": "/trumedia/static/js/main.71706f72.js.map"
   },
   "entrypoints": [
-    "static/css/main.69740d4c.css",
-    "static/js/main.050cdd45.js"
+    "static/css/main.0b558669.css",
+    "static/js/main.71706f72.js"
   ]
 }
