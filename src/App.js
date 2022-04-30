@@ -13,6 +13,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
+import TableFooter from "@mui/material/TableFooter";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import useAxiosFetch from "./hooks/useAxiosFetch";
@@ -37,6 +38,7 @@ const App = () => {
     const [playerInfoMarkup, setPlayerInfoMarkup] = useState(<h3>No Player Selected</h3>);
     const [playerStats, setPlayerStats] = useState({});
     const [tabularRows, setTabularRows] = useState([]);
+    const [seasonHighs, setSeasonHighs] = useState({});
     const [chipVariants, setChipVariants] = useState({
         weekly: "filled", biweekly: "outlined", monthly: "outlined"
     });
@@ -87,6 +89,12 @@ const App = () => {
             else {
                 setTabularRows(formatTableRows());
                 setChartIntervalData(playerStats[selectedPlayer.playerId].weeklyData);
+                setSeasonHighs({
+                    hitsHigh: `Game High Hits - ${playerStats[selectedPlayer.playerId].seasonHighs.hitsHigh.H} (${new Date(playerStats[selectedPlayer.playerId].seasonHighs.hitsHigh.gameDate).toLocaleDateString()})`,
+                    hrHigh: `Game High HR - ${playerStats[selectedPlayer.playerId].seasonHighs.hrHigh.HR} (${new Date(playerStats[selectedPlayer.playerId].seasonHighs.hrHigh.gameDate).toLocaleDateString()})`,
+                    hitStreak: `Longest Hit Streak - ${playerStats[selectedPlayer.playerId].seasonHighs.hitStreak.games} Games`,
+                    onBaseStreak: `Longest On Base Streak - ${playerStats[selectedPlayer.playerId].seasonHighs.onBaseStreak.games} Games`
+                });
                 setChipVariants({
                     weekly: "filled", biweekly: "outlined", monthly: "outlined"
                 });
@@ -100,6 +108,12 @@ const App = () => {
             const tabRows = formatTableRows();
             setTabularRows(tabRows);
             setChartIntervalData(playerStats[selectedPlayer.playerId].weeklyData);
+            setSeasonHighs({
+                hitsHigh: `Game High Hits - ${playerStats[selectedPlayer.playerId].seasonHighs.hitsHigh.H} (${new Date(playerStats[selectedPlayer.playerId].seasonHighs.hitsHigh.gameDate).toLocaleDateString()})`,
+                hrHigh: `Game High HR - ${playerStats[selectedPlayer.playerId].seasonHighs.hrHigh.HR} (${new Date(playerStats[selectedPlayer.playerId].seasonHighs.hrHigh.gameDate).toLocaleDateString()})`,
+                hitStreak: `Longest Hit Streak - ${playerStats[selectedPlayer.playerId].seasonHighs.hitStreak.games} Games`,
+                onBaseStreak: `Longest On Base Streak - ${playerStats[selectedPlayer.playerId].seasonHighs.onBaseStreak.games} Games`
+            });
             setChipVariants({
                 weekly: "filled", biweekly: "outlined", monthly: "outlined"
             });
@@ -263,6 +277,20 @@ const App = () => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
+                    </Box>
+                    <Box className="seasonHighContainer">
+                        <Paper>
+                            {seasonHighs.hitsHigh}
+                        </Paper>
+                        <Paper>
+                            {seasonHighs.hrHigh}
+                        </Paper>
+                        <Paper>
+                            {seasonHighs.hitStreak}
+                        </Paper>
+                        <Paper>
+                            {seasonHighs.onBaseStreak}
+                        </Paper>
                     </Box>
                     <Divider className="divider" />
                     <Box className="chartFilters">

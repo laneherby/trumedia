@@ -80,6 +80,19 @@ th {
     box-shadow: 1px 0 0 1px rgb(81, 81, 81);
 }
 
+.seasonHighContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.seasonHighContainer > div {
+    padding: 3px;
+}
+
 .chartFilters {
     display: flex;
     padding: 0 calc((100% - 1200px) / 2);
