@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/trumedia/static/css/main.69740d4c.css",
+    "main.js": "/trumedia/static/js/main.050cdd45.js",
+    "index.html": "/trumedia/index.html",
+    "main.69740d4c.css.map": "/trumedia/static/css/main.69740d4c.css.map",
+    "main.050cdd45.js.map": "/trumedia/static/js/main.050cdd45.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69740d4c.css",
+    "static/js/main.050cdd45.js"
+  ]
+}
